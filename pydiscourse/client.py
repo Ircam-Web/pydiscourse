@@ -235,7 +235,7 @@ class DiscourseClient(object):
             params['api_username'] = self.api_username
         url = self.host + path
 
-        response = requests.request(verb, url, allow_redirects=False, params=params, timeout=self.timeout)
+        response = requests.request(verb, url, allow_redirects=False, data=params, timeout=self.timeout)
 
         log.debug('response %s: %s', response.status_code, repr(response.text))
         if not response.ok:
