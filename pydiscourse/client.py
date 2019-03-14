@@ -117,7 +117,7 @@ class DiscourseClient(object):
 
     def topic(self, slug, topic_id, **kwargs):
         return self._get('/t/{0}/{1}.json'.format(slug, topic_id), **kwargs)
-    
+
     def post_by_id(self, post_id, **kwargs):
         return self._get('/posts/{0}.json'.format(post_id), **kwargs)
 
@@ -216,6 +216,9 @@ class DiscourseClient(object):
         for setting, value in kwargs.items():
             setting = setting.replace(' ', '_')
             self._request('PUT', '/admin/site_settings/{0}'.format(setting), {setting: value})
+
+    def get_site_settings(self, **kwargs):
+        return self._get('/admin/site_settings.json')
 
     def _get(self, path, **kwargs):
         return self._request('GET', path, kwargs)
