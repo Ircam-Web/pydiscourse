@@ -161,6 +161,9 @@ class DiscourseClient(object):
         kwargs['post[edit_reason]'] = edit_reason
         return self._put('/posts/{0}'.format(post_id), **kwargs)
 
+    def reset_bump_date(self, topic_id, **kwargs):
+        return self._put('/t/{0}/reset-bump-date'.format(topic_id), **kwargs)
+
     def topics_by(self, username, **kwargs):
         url = '/topics/created-by/{0}.json'.format(username)
         return self._get(url, **kwargs)['topic_list']['topics']
