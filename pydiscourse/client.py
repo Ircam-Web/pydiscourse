@@ -264,8 +264,8 @@ class DiscourseClient(object):
         json_content = 'application/json; charset=utf-8'
         content_type = response.headers['content-type']
         if content_type != json_content:
-            # some calls return empty html documents
-            if response.content == ' ':
+            # some calls return empty html documents or empty binary response (like /t/XXX/reset-bump-date)
+            if response.content in [' ', b'']:
                 return None
 
             raise DiscourseError('Invalid Response, expecting "{0}" got "{1}"'.format(
