@@ -23,6 +23,9 @@ class DiscourseClient(object):
     def user(self, username):
         return self._get('/users/{0}.json'.format(username))['user']
 
+    def user_by_email(self, email):
+        return self._get('/admin/users/list/all.json?email={0}'.format(email))
+
     def user_emails(self, username):
         return self._get('/u/{0}/emails.json'.format(username))
 
