@@ -229,6 +229,9 @@ class DiscourseClient(object):
     def get_site_settings(self, **kwargs):
         return self._get('/admin/site_settings.json')
 
+    def data_explorer_query(self, query_id, **kwargs):
+        return self._post('/admin/plugins/explorer/queries/{}/run'.format(query_id), **kwargs)
+
     def _get(self, path, **kwargs):
         return self._request('GET', path, kwargs)
 
