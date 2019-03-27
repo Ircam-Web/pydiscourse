@@ -282,7 +282,7 @@ class DiscourseClient(object):
         except ValueError:
             raise DiscourseError('failed to decode response', response=response)
 
-        if 'errors' in decoded:
+        if 'errors' in decoded and len(decoded['errors']) > 0:
             message = decoded.get('message')
             if not message:
                 message = u','.join(decoded['errors'])
