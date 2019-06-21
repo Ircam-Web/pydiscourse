@@ -99,6 +99,9 @@ class DiscourseClient(object):
     def delete_category(self, categoryid_or_slug, **kwargs):
         return self._delete('/categories/{0}'.format(categoryid_or_slug), **kwargs)
 
+    def delete_topic(self, topic_id, **kwargs):
+        return self._delete('/t/{0}'.format(topic_id), **kwargs)
+
     def users(self, filter=None, **kwargs):
         if filter is None:
             filter = 'active'
