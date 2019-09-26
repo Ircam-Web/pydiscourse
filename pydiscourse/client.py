@@ -228,8 +228,12 @@ class DiscourseClient(object):
     def category(self, name, parent=None, **kwargs):
         if parent:
             name = u'{0}/{1}'.format(parent, name)
-
         return self._get(u'/c/{0}.json'.format(name), **kwargs)
+
+    def category_latest_topics(self, name, parent=None, **kwargs):
+        if parent:
+            name = u'{0}/{1}'.format(parent, name)
+        return self._get(u'/c/{0}/l/latest.json'.format(name), **kwargs)
 
     def site_settings(self, **kwargs):
         for setting, value in kwargs.items():
